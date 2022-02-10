@@ -28,7 +28,7 @@ const AccountForm = ({}) => {
           display={{ md: "flex" }}
           flexDirection={"row"}
           flexWrap={"wrap"}
-          justifyContent={"center"}
+          justifyContent={"space-evenly"}
         >
           <FormControl
             id="first-name"
@@ -40,7 +40,6 @@ const AccountForm = ({}) => {
             <Input placeholder="First Name" />
             <FormErrorMessage>Your First name is invalid</FormErrorMessage>
           </FormControl>
-          <Spacer />
           <FormControl
             id="last-name"
             isRequired
@@ -51,7 +50,6 @@ const AccountForm = ({}) => {
             <Input placeholder="Last Name" />
             <FormErrorMessage>Your First name is invalid</FormErrorMessage>
           </FormControl>
-          <Spacer />
           <FormControl
             id="email"
             isRequired
@@ -62,7 +60,6 @@ const AccountForm = ({}) => {
             <Input placeholder="Email" />
             <FormErrorMessage>Your Email is invalid</FormErrorMessage>
           </FormControl>
-          <Spacer />
           <FormControl
             id="phone-number"
             isRequired
@@ -73,7 +70,6 @@ const AccountForm = ({}) => {
             <Input placeholder="Phone Number" />
             <FormErrorMessage>Your Phone Number is invalid</FormErrorMessage>
           </FormControl>
-          <Spacer />
           <FormControl
             id="postcode"
             isRequired
@@ -84,7 +80,6 @@ const AccountForm = ({}) => {
             <Input placeholder="Postcode" />
             <FormErrorMessage>Your Postcode is invalid</FormErrorMessage>
           </FormControl>
-          <Spacer />
           <FormControl
             id="state"
             isRequired
@@ -94,7 +89,6 @@ const AccountForm = ({}) => {
             <FormLabel>State</FormLabel>
             <Input placeholder="Select state" />
           </FormControl>
-          <Spacer />
           <FormControl
             id="company-name"
             isRequired
@@ -105,7 +99,6 @@ const AccountForm = ({}) => {
             <Input placeholder="Company Name" />
             <FormErrorMessage>Your company name is required</FormErrorMessage>
           </FormControl>
-          <Spacer />
           <FormControl
             id="abn"
             isRequired
@@ -116,7 +109,6 @@ const AccountForm = ({}) => {
             <Input placeholder="ABN" />
             <FormErrorMessage>Your ABN is required</FormErrorMessage>
           </FormControl>
-          <Spacer />
           <FormControl
             id="hourly-rate"
             isRequired
@@ -127,7 +119,6 @@ const AccountForm = ({}) => {
             <Input placeholder="Hourly Rate" />
             <FormErrorMessage>Your Hourly Rate is required</FormErrorMessage>
           </FormControl>
-          <Spacer />
           <FormControl
             id="dob"
             isRequired
@@ -138,7 +129,6 @@ const AccountForm = ({}) => {
             <Input placeholder="Date of Birth" />
             <FormErrorMessage>Your Date of Birth is required</FormErrorMessage>
           </FormControl>
-          <Spacer />
         </Box>
       </form>
     </>
