@@ -10,8 +10,6 @@ const Navbar = () => {
         display={"flex"}
         minW={{ lg: "container.xl", base: "100%" }}
       >
-        {/* Desktop */}
-
         <Center w={"15%"}>
           <NextLink href="/account" passHref>
             <Text fontSize={"4xl"}>My Account</Text>

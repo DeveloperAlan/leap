@@ -1,15 +1,20 @@
 import React from "react";
+import NextLink from "next/link";
 import {
   Box,
+  Button,
   Flex,
   FormControl,
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Image,
+  Text,
   useFormControl,
   Wrap,
   WrapItem,
   Spacer,
+  Link,
 } from "@chakra-ui/react";
 import { chakra, useMultiStyleConfig } from "@chakra-ui/system";
 
@@ -24,6 +29,31 @@ const AccountForm = ({}) => {
   return (
     <>
       <form>
+        <Flex my={"4rem"} padding={"1rem"}>
+          <Image
+            borderRadius="full"
+            boxSize="100px"
+            src="https://th.bing.com/th/id/OIP.ve08lbnFuFhYTD7kHklspgHaFs?pid=ImgDet&rs=1"
+            alt="Bruce Banner"
+            fit={"cover"}
+          />
+          <Box flex="flex" flex-direction={"column"} margin={"1rem"}>
+            <Text fontSize="2xl">Bruce Banner</Text>
+            <NextLink href="#">
+              <Link color={"blue"}>View Resume</Link>
+            </NextLink>
+          </Box>
+          <Spacer />
+          <Button
+            as="a"
+            aria-label="Edit"
+            colorScheme="blue"
+            my={5}
+            variant="outline"
+          >
+            Upload Resume
+          </Button>
+        </Flex>
         <Box
           display={{ md: "flex" }}
           flexDirection={"row"}
