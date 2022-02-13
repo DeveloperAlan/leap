@@ -7,7 +7,9 @@ const Layout = (props) => {
   return (
     <Box bgColor={"#eeeeee"}>
       <Navbar />
-      <Container maxW="container.xl">{children}</Container>
+      <Container maxW="container.xl" marginBottom="lg">
+        {children}
+      </Container>
     </Box>
   );
 };
