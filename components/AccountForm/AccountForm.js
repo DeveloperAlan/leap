@@ -19,7 +19,9 @@ import {
   InputLeftAddon,
 } from "@chakra-ui/react";
 import { chakra, useMultiStyleConfig } from "@chakra-ui/system";
-import DatePicker from "react-datepicker";
+import { SingleDatepicker } from "chakra-dayzed-datepicker";
+
+import useAccount from "hooks/Account";
 
 // eslint-disable-next-line react/display-name
 const Input = React.forwardRef((props, ref) => {
@@ -29,6 +31,8 @@ const Input = React.forwardRef((props, ref) => {
 });
 
 const AccountForm = ({}) => {
+  const account = useAccount();
+
   return (
     <>
       <form>
@@ -163,7 +167,10 @@ const AccountForm = ({}) => {
             w={{ base: "100%", md: "48%" }}
           >
             <FormLabel>Date of Birth</FormLabel>
-            <Input placeholder="Date of Birth" />
+            <SingleDatepicker
+              date={new Date()}
+              onChange={(date) => setStartDate(date)}
+            />
             <FormErrorMessage>Your Date of Birth is required</FormErrorMessage>
           </FormControl>
         </Box>
