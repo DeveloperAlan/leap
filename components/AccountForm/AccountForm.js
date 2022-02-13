@@ -19,6 +19,7 @@ import {
   InputLeftAddon,
 } from "@chakra-ui/react";
 import { chakra, useMultiStyleConfig } from "@chakra-ui/system";
+import DatePicker from "react-datepicker";
 
 // eslint-disable-next-line react/display-name
 const Input = React.forwardRef((props, ref) => {
