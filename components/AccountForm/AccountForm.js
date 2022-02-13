@@ -15,6 +15,8 @@ import {
   WrapItem,
   Spacer,
   Link,
+  InputGroup,
+  InputLeftAddon,
 } from "@chakra-ui/react";
 import { chakra, useMultiStyleConfig } from "@chakra-ui/system";
 
@@ -29,19 +31,37 @@ const AccountForm = ({}) => {
   return (
     <>
       <form>
-        <Flex my={"4rem"} padding={"1rem"}>
+        <Flex
+          mt={"4rem"}
+          mb={"2rem"}
+          flexDirection={{ md: "row", base: "column" }}
+        >
           <Image
             borderRadius="full"
             boxSize="100px"
             src="https://th.bing.com/th/id/OIP.ve08lbnFuFhYTD7kHklspgHaFs?pid=ImgDet&rs=1"
             alt="Bruce Banner"
             fit={"cover"}
+            alignSelf={{ md: "left", base: "center" }}
           />
-          <Box flex="flex" flex-direction={"column"} margin={"1rem"}>
-            <Text fontSize="2xl">Bruce Banner</Text>
-            <NextLink href="#">
-              <Link color={"blue"}>View Resume</Link>
-            </NextLink>
+          <Box
+            flex="flex"
+            flex-direction={"column"}
+            margin={"1rem"}
+            alignContent={{ md: "left", base: "center" }}
+          >
+            <Text
+              fontSize="2xl"
+              textAlign={{ md: "left", base: "center" }}
+              fontWeight={"bold"}
+            >
+              Bruce Banner
+            </Text>
+            <Text textAlign={{ md: "left", base: "center" }}>
+              <NextLink href="#" alignSelf={{ md: "left", base: "center" }}>
+                <Link color={"blue"}>View Resume</Link>
+              </NextLink>
+            </Text>
           </Box>
           <Spacer />
           <Button
@@ -50,15 +70,20 @@ const AccountForm = ({}) => {
             colorScheme="blue"
             my={5}
             variant="outline"
+            w={"150px"}
+            alignSelf={{ md: "left", base: "center" }}
           >
             Upload Resume
           </Button>
         </Flex>
+        <hr></hr>
         <Box
-          display={{ md: "flex" }}
+          display={"flex"}
           flexDirection={"row"}
           flexWrap={"wrap"}
-          justifyContent={"space-evenly"}
+          justifyContent={"space-between"}
+          mt={"2rem"}
+          pb={"4rem"}
         >
           <FormControl
             id="first-name"
@@ -100,44 +125,22 @@ const AccountForm = ({}) => {
             <Input placeholder="Phone Number" />
             <FormErrorMessage>Your Phone Number is invalid</FormErrorMessage>
           </FormControl>
-          <FormControl
-            id="postcode"
-            isRequired
-            isInvalid
-            w={{ base: "100%", md: "48%" }}
-          >
+          <FormControl id="postcode" isRequired isInvalid w={{ base: "48%" }}>
             <FormLabel>Postcode</FormLabel>
             <Input placeholder="Postcode" />
             <FormErrorMessage>Your Postcode is invalid</FormErrorMessage>
           </FormControl>
-          <FormControl
-            id="state"
-            isRequired
-            isInvalid
-            w={{ base: "100%", md: "48%" }}
-          >
+          <FormControl id="state" isRequired isInvalid w={{ base: "48%" }}>
             <FormLabel>State</FormLabel>
             <Input placeholder="Select state" />
           </FormControl>
-          <FormControl
-            id="company-name"
-            isRequired
-            isInvalid
-            w={{ base: "100%", md: "48%" }}
-          >
+          <FormControl id="company-name" w={{ base: "100%", md: "48%" }}>
             <FormLabel>Company Name</FormLabel>
             <Input placeholder="Company Name" />
-            <FormErrorMessage>Your company name is required</FormErrorMessage>
           </FormControl>
-          <FormControl
-            id="abn"
-            isRequired
-            isInvalid
-            w={{ base: "100%", md: "48%" }}
-          >
+          <FormControl id="abn" w={{ base: "100%", md: "48%" }}>
             <FormLabel>ABN</FormLabel>
             <Input placeholder="ABN" />
-            <FormErrorMessage>Your ABN is required</FormErrorMessage>
           </FormControl>
           <FormControl
             id="hourly-rate"
@@ -146,7 +149,10 @@ const AccountForm = ({}) => {
             w={{ base: "100%", md: "48%" }}
           >
             <FormLabel>Hourly Rate</FormLabel>
-            <Input placeholder="Hourly Rate" />
+            <InputGroup>
+              <InputLeftAddon bgColor={"gray.300"}>$</InputLeftAddon>
+              <Input placeholder="Hourly Rate" />
+            </InputGroup>
             <FormErrorMessage>Your Hourly Rate is required</FormErrorMessage>
           </FormControl>
           <FormControl

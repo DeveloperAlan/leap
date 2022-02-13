@@ -8,13 +8,14 @@ const Navbar = () => {
       <Box
         flexWrap={"row"}
         display={"flex"}
-        minW={{ lg: "container.xl", base: "100%" }}
+        minW={{ base: "100%" }}
+        padding={"1rem"}
       >
-        <Center w={"15%"}>
-          <NextLink href="/account" passHref>
+        <Box w={"50%"} alignItems={"center"} display={"flex"}>
+          <NextLink href="/account" passHref display={"block"}>
             <Text fontSize={"4xl"}>My Account</Text>
           </NextLink>
-        </Center>
+        </Box>
 
         <Spacer />
 
