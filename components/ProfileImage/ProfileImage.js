@@ -20,14 +20,14 @@ import {
   InputLeftAddon,
 } from "@chakra-ui/react";
 
-const ProfileImage = () => {
+const ProfileImage = ({ name }) => {
   return (
     <Flex mt={"4rem"} mb={"2rem"} flexDirection={{ md: "row", base: "column" }}>
       <Image
         borderRadius="full"
         boxSize="100px"
         src="https://th.bing.com/th/id/OIP.ve08lbnFuFhYTD7kHklspgHaFs?pid=ImgDet&rs=1"
-        alt="Bruce Banner"
+        alt={`${name}`}
         fit={"cover"}
         alignSelf={{ md: "left", base: "center" }}
       />
@@ -42,7 +42,7 @@ const ProfileImage = () => {
           textAlign={{ md: "left", base: "center" }}
           fontWeight={"bold"}
         >
-          Bruce Banner
+          {`${name}`}
         </Text>
         <Text textAlign={{ md: "left", base: "center" }}>
           <NextLink href="#" alignSelf={{ md: "left", base: "center" }}>

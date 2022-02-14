@@ -12,6 +12,8 @@ function AccountIndexPage() {
   const account = useAccount();
   const formRef = useRef();
 
+  let isEdit = router.query.edit === "true" ? true : false;
+
   const saveAccount = () => {
     formRef.current.handleSubmit();
   };
@@ -22,19 +24,19 @@ function AccountIndexPage() {
   };
 
   const resetForm = () => {
-    formRef.current.resetForm();
-    router.push("/account");
+    if (isEdit) {
+      formRef.current.resetForm();
+      router.push("/account");
+    }
   };
-
-  console.log(router.query);
-
-  let isEdit = router.query.edit === "true" ? true : false;
 
   return (
     <div>
       <Navbar isEdit={isEdit} saveAccount={saveAccount} resetForm={resetForm} />
       <Container maxW="container.xl" marginBottom="lg">
-        <ProfileImage />
+        <ProfileImage
+          name={`${account.details.firstName} ${account.details.lastName}`}
+        />
         <hr></hr>
         <AccountForm
           isEdit={isEdit}

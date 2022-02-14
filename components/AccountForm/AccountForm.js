@@ -14,6 +14,7 @@ import {
   useFormControl,
   Wrap,
   WrapItem,
+  Select,
   Spacer,
   Link,
   InputGroup,
@@ -30,12 +31,12 @@ const Input = React.forwardRef((props, ref) => {
   return <chakra.input ref={ref} __css={styles.field} {...inputProps} />;
 });
 
-// eslint-disable-next-line react/display-name
-const Select = React.forwardRef((props, ref) => {
-  const styles = useMultiStyleConfig("Select", props);
-  const inputProps = useFormControl(props);
-  return <chakra.select ref={ref} __css={styles.field} {...inputProps} />;
-});
+// // eslint-disable-next-line react/display-name
+// const Select = React.forwardRef((props, ref) => {
+//   const styles = useMultiStyleConfig("Select", props);
+//   const inputProps = useFormControl(props);
+//   return <chakra.select ref={ref} __css={styles.field} {...inputProps} />;
+// });
 
 const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
   return (
@@ -45,10 +46,12 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
         enableReinitialize
         innerRef={formRef}
         initialValues={account.details}
-        validate={(values) => {
-          const errors = {};
+        // validate={(values) => {
+        //   const errors = {};
+        // }}
+        onSubmit={(values, actions) => {
+          handleSubmit(values);
         }}
-        handleSubmit={handleSubmit}
       >
         {(props) => (
           <Form>
@@ -164,7 +167,6 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                       <FormLabel>State</FormLabel>
                       <Select
                         {...field}
-                        icon={<MdArrowDropDown />}
                         id="country"
                         placeholder="Select country"
                       >
