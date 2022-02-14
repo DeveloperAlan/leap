@@ -31,17 +31,19 @@ const Navbar = (props) => {
 
         <Spacer />
 
-        <NextLink href="/account?edit" passHref>
-          <Button as="a" aria-label="Edit" colorScheme="blue" my={5}>
-            Edit
-          </Button>
-        </NextLink>
-
-        <NextLink href="/account" passHref>
-          <Button as="a" aria-label="Save" colorScheme="blue" my={5}>
-            Save
-          </Button>
-        </NextLink>
+        {props.isEdit ? (
+          <NextLink href="/account" passHref>
+            <Button as="a" aria-label="Save" colorScheme="blue" my={5}>
+              Save
+            </Button>
+          </NextLink>
+        ) : (
+          <NextLink href="/account?edit=true" passHref>
+            <Button as="a" aria-label="Edit" colorScheme="blue" my={5}>
+              Edit
+            </Button>
+          </NextLink>
+        )}
       </Box>
     </Center>
   );
