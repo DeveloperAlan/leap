@@ -57,8 +57,6 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
             >
               <Field name="firstName">
                 {({ field, form }) => {
-                  console.log("field", field);
-                  console.log("form", form);
                   return (
                     <FormControl
                       id="first-name"
