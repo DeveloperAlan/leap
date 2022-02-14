@@ -37,20 +37,18 @@ const Select = React.forwardRef((props, ref) => {
   return <chakra.select ref={ref} __css={styles.field} {...inputProps} />;
 });
 
-const setStartDate = (date) => {
-  return;
-};
-
-const AccountForm = ({ account }) => {
+const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
   return (
     <>
       <hr></hr>
       <Formik
         enableReinitialize
+        innerRef={formRef}
         initialValues={account.details}
         validate={(values) => {
           const errors = {};
         }}
+        handleSubmit={handleSubmit}
       >
         {(props) => (
           <Form>
@@ -69,6 +67,7 @@ const AccountForm = ({ account }) => {
                       id="first-name"
                       isRequired
                       isInvalid
+                      isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>First name</FormLabel>
@@ -85,6 +84,7 @@ const AccountForm = ({ account }) => {
                       id="last-name"
                       isRequired
                       isInvalid
+                      isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>Last name</FormLabel>
@@ -103,6 +103,7 @@ const AccountForm = ({ account }) => {
                       id="email"
                       isRequired
                       isInvalid
+                      isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>Email</FormLabel>
@@ -119,6 +120,7 @@ const AccountForm = ({ account }) => {
                       id="phone-number"
                       isRequired
                       isInvalid
+                      isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>Phone Number</FormLabel>
@@ -137,6 +139,7 @@ const AccountForm = ({ account }) => {
                       id="postcode"
                       isRequired
                       isInvalid
+                      isDisabled={isEdit ? false : true}
                       w={{ base: "48%" }}
                     >
                       <FormLabel>Postcode</FormLabel>
@@ -155,6 +158,7 @@ const AccountForm = ({ account }) => {
                       id="state"
                       isRequired
                       isInvalid
+                      isDisabled={isEdit ? false : true}
                       w={{ base: "48%" }}
                     >
                       <FormLabel>State</FormLabel>
@@ -183,6 +187,7 @@ const AccountForm = ({ account }) => {
                     <FormControl
                       id="company-name"
                       w={{ base: "100%", md: "48%" }}
+                      isDisabled={isEdit ? false : true}
                     >
                       <FormLabel>Company Name</FormLabel>
                       <Input {...field} placeholder="Company Name" />
@@ -193,7 +198,11 @@ const AccountForm = ({ account }) => {
               <Field name="abn">
                 {({ field, form }) => {
                   return (
-                    <FormControl id="abn" w={{ base: "100%", md: "48%" }}>
+                    <FormControl
+                      id="abn"
+                      w={{ base: "100%", md: "48%" }}
+                      isDisabled={isEdit ? false : true}
+                    >
                       <FormLabel>ABN</FormLabel>
                       <Input {...field} placeholder="ABN" />
                     </FormControl>
@@ -207,6 +216,7 @@ const AccountForm = ({ account }) => {
                       id="hourly-rate"
                       isRequired
                       isInvalid
+                      isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>Hourly Rate</FormLabel>
@@ -228,6 +238,7 @@ const AccountForm = ({ account }) => {
                       id="dob"
                       isRequired
                       isInvalid
+                      isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>Date of Birth</FormLabel>

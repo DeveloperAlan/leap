@@ -23,6 +23,9 @@ const Navbar = (props) => {
             aria-label="Back to Account"
             icon={<ArrowBackIcon />}
             mr={"1rem"}
+            onClick={() => {
+              props.resetForm();
+            }}
           />
           <NextLink href="/account" passHref display={"block"}>
             <Text fontSize={{ md: "4xl", base: "2xl" }}>My Account</Text>
