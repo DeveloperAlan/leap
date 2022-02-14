@@ -63,7 +63,7 @@ const ProfileImage = ({ name }) => {
         </Text>
         <Text textAlign={{ md: "left", base: "center" }}>
           <Button p={0} colorScheme="none" onClick={onOpen}>
-            <Link color={"blue"}>View Profile Picture</Link>
+            <Link color={"blue"}>View Avatar</Link>
           </Button>
         </Text>
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -94,11 +94,11 @@ const ProfileImage = ({ name }) => {
         colorScheme="blue"
         my={5}
         variant="outline"
-        w={"200px"}
+        w={"150px"}
         alignSelf={{ md: "left", base: "center" }}
         onClick={handleClick}
       >
-        Upload Profile Image
+        Update Avatar
       </Button>
     </Flex>
   );
