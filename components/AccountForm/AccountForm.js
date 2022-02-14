@@ -1,26 +1,15 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
-import NextLink from "next/link";
 import {
   Box,
-  Button,
-  Flex,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  FormHelperText,
-  Image,
-  Text,
-  useFormControl,
-  Wrap,
-  WrapItem,
-  Select,
-  Spacer,
-  Link,
   InputGroup,
   InputLeftAddon,
+  Select,
+  useFormControl,
 } from "@chakra-ui/react";
-import { MdArrowDropDown } from "@chakra-ui/icons";
 import { chakra, useMultiStyleConfig } from "@chakra-ui/system";
 import { SingleDatepicker } from "chakra-dayzed-datepicker";
 import SignupSchema from "utils/ErrorHandling";
@@ -41,11 +30,11 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
         initialValues={account.details}
         validationSchema={SignupSchema}
         validateOnChange={false}
-        onSubmit={(values, actions) => {
+        onSubmit={(values) => {
           handleSubmit(values);
         }}
       >
-        {({ errors }) => (
+        {({}) => (
           <Form>
             <Box
               display={"flex"}
