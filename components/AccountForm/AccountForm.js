@@ -23,8 +23,6 @@ import { MdArrowDropDown } from "@chakra-ui/icons";
 import { chakra, useMultiStyleConfig } from "@chakra-ui/system";
 import { SingleDatepicker } from "chakra-dayzed-datepicker";
 
-import useAccount from "hooks/Account";
-
 // eslint-disable-next-line react/display-name
 const Input = React.forwardRef((props, ref) => {
   const styles = useMultiStyleConfig("Input", props);
@@ -43,56 +41,9 @@ const setStartDate = (date) => {
   return;
 };
 
-const AccountForm = ({}) => {
-  const account = useAccount();
-
+const AccountForm = ({ account }) => {
   return (
     <>
-      <Flex
-        mt={"4rem"}
-        mb={"2rem"}
-        flexDirection={{ md: "row", base: "column" }}
-      >
-        <Image
-          borderRadius="full"
-          boxSize="100px"
-          src="https://th.bing.com/th/id/OIP.ve08lbnFuFhYTD7kHklspgHaFs?pid=ImgDet&rs=1"
-          alt="Bruce Banner"
-          fit={"cover"}
-          alignSelf={{ md: "left", base: "center" }}
-        />
-        <Box
-          flex="flex"
-          flex-direction={"column"}
-          margin={"1rem"}
-          alignContent={{ md: "left", base: "center" }}
-        >
-          <Text
-            fontSize="2xl"
-            textAlign={{ md: "left", base: "center" }}
-            fontWeight={"bold"}
-          >
-            Bruce Banner
-          </Text>
-          <Text textAlign={{ md: "left", base: "center" }}>
-            <NextLink href="#" alignSelf={{ md: "left", base: "center" }}>
-              <Link color={"blue"}>View Resume</Link>
-            </NextLink>
-          </Text>
-        </Box>
-        <Spacer />
-        <Button
-          as="a"
-          aria-label="Edit"
-          colorScheme="blue"
-          my={5}
-          variant="outline"
-          w={"150px"}
-          alignSelf={{ md: "left", base: "center" }}
-        >
-          Upload Resume
-        </Button>
-      </Flex>
       <hr></hr>
       <Formik
         enableReinitialize
