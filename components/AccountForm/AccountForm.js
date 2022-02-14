@@ -41,6 +41,7 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
         innerRef={formRef}
         initialValues={account.details}
         validationSchema={SignupSchema}
+        validateOnChange={false}
         onSubmit={(values, actions) => {
           handleSubmit(values);
         }}
