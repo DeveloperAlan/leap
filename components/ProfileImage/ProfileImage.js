@@ -1,28 +1,43 @@
-import React from "react";
-import { Formik, Field, Form } from "formik";
-import NextLink from "next/link";
+import React, { useRef } from "react";
 import {
   Box,
   Button,
   Flex,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Image,
   Text,
-  useFormControl,
-  Wrap,
-  WrapItem,
   Spacer,
   Link,
-  InputGroup,
-  InputLeftAddon,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  useDisclosure,
 } from "@chakra-ui/react";
 import useProfileImage from "hooks/ProfileImage";
 
 const ProfileImage = ({ name }) => {
   const { profileImage, setProfileImage } = useProfileImage();
+  const imageRef = useRef();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleClick = () => imageRef.current?.click();
+  const handleFileUpload = (e) => {
+    const picture = e.target.files[0];
+
+    const reader = new FileReader();
+    reader.addEventListener(
+      "load",
+      function () {
+        // convert image file to base64 string
+        setProfileImage(reader.result);
+      },
+      false
+    );
+
+    if (picture) {
+      reader.readAsDataURL(picture);
+    }
+  };
   return (
     <Flex mt={"4rem"} mb={"2rem"} flexDirection={{ md: "row", base: "column" }}>
       <Image
@@ -47,12 +62,32 @@ const ProfileImage = ({ name }) => {
           {`${name}`}
         </Text>
         <Text textAlign={{ md: "left", base: "center" }}>
-          <a href={profileImage} target="_blank ">
+          <Button p={0} colorScheme="none" onClick={onOpen}>
             <Link color={"blue"}>View Profile Picture</Link>
-          </a>
+          </Button>
         </Text>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalBody>
+              <Image src={profileImage} alt={`${name}`} fit={"cover"} />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </Box>
       <Spacer />
+
+      <input
+        type="file"
+        multiple
+        accept="image/*"
+        hidden
+        ref={(e) => {
+          imageRef.current = e;
+        }}
+        onChange={handleFileUpload}
+      />
+
       <Button
         as="a"
         aria-label="Edit"
@@ -61,6 +96,7 @@ const ProfileImage = ({ name }) => {
         variant="outline"
         w={"200px"}
         alignSelf={{ md: "left", base: "center" }}
+        onClick={handleClick}
       >
         Upload Profile Image
       </Button>
