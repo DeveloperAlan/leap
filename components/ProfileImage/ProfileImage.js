@@ -19,14 +19,16 @@ import {
   InputGroup,
   InputLeftAddon,
 } from "@chakra-ui/react";
+import useProfileImage from "hooks/ProfileImage";
 
 const ProfileImage = ({ name }) => {
+  const { profileImage, setProfileImage } = useProfileImage();
   return (
     <Flex mt={"4rem"} mb={"2rem"} flexDirection={{ md: "row", base: "column" }}>
       <Image
         borderRadius="full"
         boxSize="100px"
-        src="https://th.bing.com/th/id/OIP.ve08lbnFuFhYTD7kHklspgHaFs?pid=ImgDet&rs=1"
+        src={profileImage}
         alt={`${name}`}
         fit={"cover"}
         alignSelf={{ md: "left", base: "center" }}
@@ -45,9 +47,9 @@ const ProfileImage = ({ name }) => {
           {`${name}`}
         </Text>
         <Text textAlign={{ md: "left", base: "center" }}>
-          <NextLink href="#" alignSelf={{ md: "left", base: "center" }}>
-            <Link color={"blue"}>View Resume</Link>
-          </NextLink>
+          <a href={profileImage} target="_blank ">
+            <Link color={"blue"}>View Profile Picture</Link>
+          </a>
         </Text>
       </Box>
       <Spacer />
@@ -57,10 +59,10 @@ const ProfileImage = ({ name }) => {
         colorScheme="blue"
         my={5}
         variant="outline"
-        w={"150px"}
+        w={"200px"}
         alignSelf={{ md: "left", base: "center" }}
       >
-        Upload Resume
+        Upload Profile Image
       </Button>
     </Flex>
   );

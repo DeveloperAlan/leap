@@ -35,7 +35,6 @@ const Input = React.forwardRef((props, ref) => {
 const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
   return (
     <>
-      <hr></hr>
       <Formik
         enableReinitialize
         innerRef={formRef}
