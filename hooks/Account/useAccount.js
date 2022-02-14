@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useState } from "react";
+
 const DEFAULT_VALUE = {
   initialised: true,
   firstName: "Bruce",
@@ -14,15 +15,9 @@ const DEFAULT_VALUE = {
 };
 
 export default function useAccount() {
-  useEffect(() => {
-    const initialised = JSON.parse(localStorage.getItem("initialised"));
+  const [data, setDate] = useState(DEFAULT_VALUE);
 
-    console.log("initialised", initialised);
-
-    if (!initialised) {
-      Object.keys(DEFAULT_VALUE).forEach((key) => {
-        localStorage.setItem(key, JSON.stringify(DEFAULT_VALUE[key]));
-      });
-    }
-  }, []);
+  return {
+    details: data,
+  };
 }
