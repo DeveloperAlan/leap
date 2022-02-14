@@ -23,6 +23,7 @@ import {
 import { MdArrowDropDown } from "@chakra-ui/icons";
 import { chakra, useMultiStyleConfig } from "@chakra-ui/system";
 import { SingleDatepicker } from "chakra-dayzed-datepicker";
+import SignupSchema from "utils/ErrorHandling";
 
 // eslint-disable-next-line react/display-name
 const Input = React.forwardRef((props, ref) => {
@@ -30,13 +31,6 @@ const Input = React.forwardRef((props, ref) => {
   const inputProps = useFormControl(props);
   return <chakra.input ref={ref} __css={styles.field} {...inputProps} />;
 });
-
-// // eslint-disable-next-line react/display-name
-// const Select = React.forwardRef((props, ref) => {
-//   const styles = useMultiStyleConfig("Select", props);
-//   const inputProps = useFormControl(props);
-//   return <chakra.select ref={ref} __css={styles.field} {...inputProps} />;
-// });
 
 const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
   return (
@@ -46,14 +40,12 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
         enableReinitialize
         innerRef={formRef}
         initialValues={account.details}
-        // validate={(values) => {
-        //   const errors = {};
-        // }}
+        validationSchema={SignupSchema}
         onSubmit={(values, actions) => {
           handleSubmit(values);
         }}
       >
-        {(props) => (
+        {({ errors }) => (
           <Form>
             <Box
               display={"flex"}
@@ -65,17 +57,21 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
             >
               <Field name="firstName">
                 {({ field, form }) => {
+                  console.log("field", field);
+                  console.log("form", form);
                   return (
                     <FormControl
                       id="first-name"
                       isRequired
-                      isInvalid
+                      isInvalid={form.errors.firstName ? true : false}
                       isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>First name</FormLabel>
                       <Input {...field} placeholder="First Name" />
-                      {/* <FormErrorMessage>{form.error.firstName}</FormErrorMessage> */}
+                      <FormErrorMessage>
+                        {form.errors.firstName}
+                      </FormErrorMessage>
                     </FormControl>
                   );
                 }}
@@ -86,14 +82,14 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                     <FormControl
                       id="last-name"
                       isRequired
-                      isInvalid
+                      isInvalid={form.errors.lastName ? true : false}
                       isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>Last name</FormLabel>
                       <Input {...field} placeholder="Last Name" />
                       <FormErrorMessage>
-                        Your Last name is invalid
+                        {form.errors.lastName}
                       </FormErrorMessage>
                     </FormControl>
                   );
@@ -105,13 +101,13 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                     <FormControl
                       id="email"
                       isRequired
-                      isInvalid
+                      isInvalid={form.errors.email ? true : false}
                       isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>Email</FormLabel>
                       <Input {...field} placeholder="Email" />
-                      <FormErrorMessage>Your Email is invalid</FormErrorMessage>
+                      <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                     </FormControl>
                   );
                 }}
@@ -122,14 +118,14 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                     <FormControl
                       id="phone-number"
                       isRequired
-                      isInvalid
+                      isInvalid={form.errors.phoneNumber ? true : false}
                       isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
                       <FormLabel>Phone Number</FormLabel>
                       <Input {...field} placeholder="Phone Number" />
                       <FormErrorMessage>
-                        Your Phone Number is invalid
+                        {form.errors.phoneNumber}
                       </FormErrorMessage>
                     </FormControl>
                   );
@@ -141,14 +137,14 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                     <FormControl
                       id="postcode"
                       isRequired
-                      isInvalid
+                      isInvalid={form.errors.postcode ? true : false}
                       isDisabled={isEdit ? false : true}
                       w={{ base: "48%" }}
                     >
                       <FormLabel>Postcode</FormLabel>
                       <Input {...field} placeholder="Postcode" />
                       <FormErrorMessage>
-                        Your Postcode is invalid
+                        {form.errors.postcode}
                       </FormErrorMessage>
                     </FormControl>
                   );
@@ -160,7 +156,7 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                     <FormControl
                       id="state"
                       isRequired
-                      isInvalid
+                      isInvalid={form.errors.state ? true : false}
                       isDisabled={isEdit ? false : true}
                       w={{ base: "48%" }}
                     >
@@ -168,7 +164,7 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                       <Select
                         {...field}
                         id="country"
-                        placeholder="Select country"
+                        placeholder="Select state"
                       >
                         <option>NSW</option>
                         <option>Victoria</option>
@@ -179,6 +175,7 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                         <option>Tasmania</option>
                         <option>ACT</option>
                       </Select>
+                      <FormErrorMessage>{form.errors.state}</FormErrorMessage>
                     </FormControl>
                   );
                 }}
@@ -217,7 +214,7 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                     <FormControl
                       id="hourly-rate"
                       isRequired
-                      isInvalid
+                      isInvalid={form.errors.rate ? true : false}
                       isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
@@ -226,9 +223,7 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                         <InputLeftAddon bgColor={"gray.300"}>$</InputLeftAddon>
                         <Input {...field} placeholder="Hourly Rate" />
                       </InputGroup>
-                      <FormErrorMessage>
-                        Your Hourly Rate is required
-                      </FormErrorMessage>
+                      <FormErrorMessage>{form.errors.rate}</FormErrorMessage>
                     </FormControl>
                   );
                 }}
@@ -239,7 +234,7 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                     <FormControl
                       id="dob"
                       isRequired
-                      isInvalid
+                      isInvalid={form.errors.dob ? true : false}
                       isDisabled={isEdit ? false : true}
                       w={{ base: "100%", md: "48%" }}
                     >
@@ -249,9 +244,7 @@ const AccountForm = ({ account, handleSubmit, isEdit, formRef }) => {
                         date={field.value}
                         onChange={(date) => setStartDate(date)}
                       />
-                      <FormErrorMessage>
-                        Your Date of Birth is required
-                      </FormErrorMessage>
+                      <FormErrorMessage>{form.errors.dob}</FormErrorMessage>
                     </FormControl>
                   );
                 }}

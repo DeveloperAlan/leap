@@ -15,9 +15,10 @@ const DEFAULT_VALUE = {
 };
 
 export default function useAccount() {
-  const [data, setDate] = useState(DEFAULT_VALUE);
+  const [details, setDetails] = useState(DEFAULT_VALUE);
 
   return {
-    details: data,
+    details,
+    setDetails,
   };
 }
