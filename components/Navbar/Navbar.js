@@ -1,8 +1,15 @@
-import { Box, Button, Center, Flex, Spacer, Text } from "@chakra-ui/react";
-import PropTypes from "prop-types";
+import { ArrowBackIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Button,
+  Center,
+  IconButton,
+  Spacer,
+  Text,
+} from "@chakra-ui/react";
 import NextLink from "next/link";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <Center bgColor={"white"} flex={"flex"}>
       <Box
@@ -12,20 +19,25 @@ const Navbar = () => {
         padding={"1rem"}
       >
         <Box w={"50%"} alignItems={"center"} display={"flex"}>
+          <IconButton
+            aria-label="Back to Account"
+            icon={<ArrowBackIcon />}
+            mr={"1rem"}
+          />
           <NextLink href="/account" passHref display={"block"}>
-            <Text fontSize={"4xl"}>My Account</Text>
+            <Text fontSize={{ md: "4xl", base: "2xl" }}>My Account</Text>
           </NextLink>
         </Box>
 
         <Spacer />
 
-        <NextLink href="/about" passHref>
+        <NextLink href="/account?edit" passHref>
           <Button as="a" aria-label="Edit" colorScheme="blue" my={5}>
             Edit
           </Button>
         </NextLink>
 
-        <NextLink href="/contact" passHref>
+        <NextLink href="/account" passHref>
           <Button as="a" aria-label="Save" colorScheme="blue" my={5}>
             Save
           </Button>
