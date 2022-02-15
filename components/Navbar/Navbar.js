@@ -39,7 +39,6 @@ const Navbar = (props) => {
 
         {props.isEdit ? (
           <Button
-            as="a"
             aria-label="Save"
             colorScheme="blue"
             my={5}

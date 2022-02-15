@@ -90,7 +90,7 @@ const ProfileImage = ({ name }) => {
 
       <Button
         as="a"
-        aria-label="Edit"
+        aria-label="Update Avatar"
         colorScheme="blue"
         my={5}
         variant="outline"
